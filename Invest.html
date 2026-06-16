@@ -1,0 +1,2331 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EstateLux Investment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#081120;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+/* Navbar */
+
+.navbar{
+  position:fixed;
+top:0;
+left:0;
+width:100%;
+height:80px;
+padding:0 6%;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+background:rgba(10,20,40,.7);
+backdrop-filter:blur(20px);
+
+border-bottom:
+1px solid rgba(255,255,255,.08);
+
+z-index:1000;
+}
+
+
+
+/* LOGO */
+.logo img{
+  height:62px;
+  width:auto;
+  display:block;
+
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(78%)
+    sepia(68%)
+    saturate(659%)
+    hue-rotate(7deg)
+    brightness(102%)
+    contrast(95%);
+
+  transition:0.4s ease;
+}
+
+.logo img:hover{
+  transform:scale(1.05);
+}
+
+/* MENU */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:50px;
+  list-style:none;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#e6c436;
+  font-size:16px;
+  font-weight:600;
+  position:relative;
+  transition:0.3s ease;
+}
+
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:2px;
+  background:#e6c436;
+  transition:0.4s ease;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.nav-links a:hover{
+  color:#d4aa2a;
+}
+
+/* CALL BUTTON */
+.call-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  background:#e6c436;
+  color:#111;
+  padding:14px 28px;
+  border-radius:50px;
+  font-weight:700;
+  transition:0.3s ease;
+}
+
+.call-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(230,196,54,.35);
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:30px;
+  color:#e6c436;
+  cursor:pointer;
+  z-index:1001;
+  transition:0.3s ease;
+  background:none;
+  border:none;
+  padding:10px;
+}
+
+.menu-toggle:hover{
+  color:#f4d84a;
+  transform:rotate(90deg);
+}
+
+/* TABLET */
+@media(max-width:991px){
+  .navbar{
+    padding:0 5%;
+  }
+
+  .nav-links{
+    gap:25px;
+  }
+}
+
+/* MOBILE GLASS MENU */
+@media(max-width:768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-links{
+    position:fixed;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100vh;
+
+    background:linear-gradient(135deg,#0b1f4d,#162f6d);
+    backdrop-filter:blur(12px);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+
+    transition:0.5s ease-in-out;
+    z-index:999;
+  }
+
+  .nav-links.active{
+    left:0;
+  }
+
+  .nav-links li{
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.5s ease;
+  }
+
+  .nav-links.active li{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .nav-links li:nth-child(1){transition-delay:0.1s;}
+  .nav-links li:nth-child(2){transition-delay:0.2s;}
+  .nav-links li:nth-child(3){transition-delay:0.3s;}
+  .nav-links li:nth-child(4){transition-delay:0.4s;}
+
+  .nav-links a{
+    font-size:28px;
+    font-weight:700;
+    color:#fff;
+  }
+
+  .nav-links a:hover{
+    color:#e6c436;
+    transform:translateX(10px);
+  }
+
+  .navbar{
+    height:70px;
+    padding:0 4%;
+  }
+}
+
+/* SMALL MOBILE */
+@media(max-width:480px){
+  .navbar{
+    padding:0 3%;
+    height:60px;
+  }
+
+  .menu-toggle{
+    font-size:24px;
+    padding:8px;
+  }
+
+  .call-btn{
+    padding:10px 16px;
+    font-size:12px;
+  }
+
+  .logo img{
+    height:32px;
+  }
+}
+
+/* =========================
+   PREMIUM SIGNUP BUTTON
+========================= */
+
+.mobile-btn {
+  list-style: none;
+}
+
+/* BUTTON BASE */
+.signup-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 26px;
+  border-radius: 50px;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+
+  color: #fff;
+
+  /* Ultra gradient */
+  background: linear-gradient(
+    135deg,
+    #00f5a0,
+    #00d9f5,
+    #6a5cff,
+    #ff4ecd
+  );
+  background-size: 300% 300%;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 10px 30px rgba(0, 255, 200, 0.25),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(10px);
+
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* ANIMATED GRADIENT SHIFT */
+.signup-btn {
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* HOVER EFFECT */
+.signup-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 15px 45px rgba(0, 255, 200, 0.35),
+    0 0 25px rgba(255, 78, 205, 0.35);
+}
+
+/* CLICK EFFECT */
+.signup-btn:active {
+  transform: scale(0.98);
+}
+
+/* GLOW PULSE DOT */
+.signup-btn::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.signup-btn:hover::before {
+  opacity: 1;
+}
+
+/* SHINE SWEEP EFFECT */
+.signup-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+.signup-btn:hover::after {
+  animation: shine 1s ease forwards;
+}
+
+@keyframes shine {
+  100% {
+    left: 120%;
+  }
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .signup-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+padding:170px 8% 100px;
+text-align:center;
+background:
+radial-gradient(circle at top left,
+#1f2937,
+#081120 60%);
+}
+
+.hero-tag{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:14px 24px;
+border-radius:50px;
+background:rgba(255,255,255,.08);
+margin-bottom:30px;
+font-weight:600;
+color:#e6c436;
+}
+
+.hero h1{
+font-size:72px;
+line-height:1.1;
+margin-bottom:25px;
+}
+
+.hero p{
+max-width:850px;
+margin:auto;
+font-size:18px;
+line-height:1.9;
+color:rgba(255,255,255,.7);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+padding:80px 8%;
+}
+
+.stat-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:35px;
+border-radius:28px;
+text-align:center;
+transition:.4s;
+}
+
+.stat-card:hover{
+transform:translateY(-8px);
+border-color:#e6c436;
+}
+
+.stat-card h2{
+font-size:42px;
+margin-bottom:12px;
+color:#e6c436;
+}
+
+.stat-card p{
+color:rgba(255,255,255,.7);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-section{
+padding:100px 8%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:center;
+}
+
+.invest-image{
+position:relative;
+}
+
+.invest-image img{
+width:100%;
+border-radius:35px;
+display:block;
+}
+
+.invest-box{
+position:absolute;
+bottom:30px;
+left:30px;
+background:#fff;
+color:#081120;
+padding:24px;
+border-radius:24px;
+font-weight:700;
+}
+
+.invest-box h3{
+font-size:38px;
+margin-bottom:5px;
+}
+
+.invest-text h2{
+font-size:54px;
+line-height:1.2;
+margin-bottom:25px;
+}
+
+.invest-text p{
+font-size:17px;
+line-height:1.9;
+color:rgba(255,255,255,.7);
+margin-bottom:35px;
+}
+
+.features{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.feature{
+display:flex;
+gap:20px;
+align-items:flex-start;
+}
+
+.feature i{
+width:65px;
+height:65px;
+border-radius:18px;
+background:linear-gradient(135deg,#e6c436,#f4d84a);
+color:#081120;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:24px;
+flex-shrink:0;
+}
+
+.feature h3{
+margin-bottom:8px;
+font-size:20px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-section{
+padding:100px 8%;
+}
+
+.form-box{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:60px;
+border-radius:35px;
+}
+
+.form-title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.form-title h2{
+font-size:48px;
+margin-bottom:18px;
+}
+
+.form-title p{
+max-width:700px;
+margin:auto;
+line-height:1.8;
+color:rgba(255,255,255,.7);
+}
+
+.invest-form{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.form-group{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.form-group.full{
+grid-column:1/3;
+}
+
+.form-group label{
+font-weight:600;
+}
+
+.input-box{
+display:flex;
+align-items:center;
+gap:15px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:18px 20px;
+border-radius:18px;
+}
+
+.input-box i{
+color:#e6c436;
+font-size:18px;
+}
+
+.input-box input,
+.input-box textarea,
+.input-box select{
+width:100%;
+background:none;
+border:none;
+outline:none;
+font-size:15px;
+color:#fff;
+font-family:'Inter',sans-serif;
+}
+
+.input-box textarea{
+height:140px;
+resize:none;
+}
+
+.invest-btn{
+grid-column:1/3;
+padding:20px;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#e6c436,#f4d84a);
+color:#081120;
+font-size:16px;
+font-weight:800;
+cursor:pointer;
+transition:.4s;
+}
+
+.invest-btn:hover{
+transform:translateY(-5px);
+}
+
+/* =========================
+   NEWSLETTER
+========================= */
+
+.newsletter{
+margin:100px 8%;
+padding:60px;
+border-radius:35px;
+background:linear-gradient(135deg,#132850,#0d1c3d);
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.footer-mini-tag{
+display:inline-block;
+padding:10px 20px;
+border-radius:50px;
+background:rgba(255,255,255,.08);
+margin-bottom:25px;
+color:#e6c436;
+font-size:13px;
+font-weight:700;
+}
+
+.newsletter-left h2{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.newsletter-left h2 span{
+color:#e6c436;
+}
+
+.newsletter-left p{
+max-width:600px;
+line-height:1.8;
+color:rgba(255,255,255,.7);
+}
+
+.newsletter-form{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.newsletter-form .input-box{
+width:320px;
+}
+
+.newsletter-form button{
+padding:18px 28px;
+border:none;
+border-radius:18px;
+background:#e6c436;
+color:#081120;
+font-weight:800;
+cursor:pointer;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+/* =========================================
+   ULTRA PREMIUM FOOTER
+========================================= */
+
+.ultra-footer{
+  position:relative;
+  overflow:hidden;
+
+  padding:120px 7% 40px;
+
+  color:#fff;
+
+  background:
+  radial-gradient(circle at top left,
+  rgba(212,175,55,0.15),
+  transparent 28%),
+
+  radial-gradient(circle at bottom right,
+  rgba(0,119,255,0.14),
+  transparent 30%),
+
+  linear-gradient(
+  135deg,
+  #03132d,
+  #071b3d,
+  #021022);
+}
+
+/* =========================================
+   GLOW EFFECTS
+========================================= */
+
+.footer-glow{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(120px);
+}
+
+.glow-1{
+  width:350px;
+  height:350px;
+
+  background:rgba(212,175,55,0.16);
+
+  top:-120px;
+  left:-120px;
+}
+
+.glow-2{
+  width:420px;
+  height:420px;
+
+  background:rgba(0,119,255,0.14);
+
+  right:-150px;
+  bottom:-150px;
+}
+
+/* =========================================
+   NEWSLETTER BOX
+========================================= */
+
+.footer-newsletter{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:50px;
+
+  padding:70px;
+
+  margin-bottom:90px;
+
+  border-radius:38px;
+
+  background:
+  linear-gradient(
+  145deg,
+  rgba(255,255,255,0.08),
+  rgba(255,255,255,0.03));
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(20px);
+
+  box-shadow:
+  0 20px 70px rgba(0,0,0,0.35);
+}
+
+/* =========================================
+   MINI TAG
+========================================= */
+
+.footer-mini-tag{
+  display:inline-flex;
+
+  padding:12px 24px;
+
+  border-radius:100px;
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  color:#d4af37;
+
+  font-size:12px;
+  font-weight:800;
+
+  letter-spacing:2px;
+
+  margin-bottom:24px;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.newsletter-left h2{
+  font-size:62px;
+  line-height:1.08;
+
+  font-weight:900;
+
+  margin-bottom:20px;
+}
+
+.newsletter-left h2 span{
+  color:#d4af37;
+}
+
+.newsletter-left p{
+  max-width:620px;
+
+  font-size:18px;
+  line-height:1.9;
+
+  color:rgba(255,255,255,0.72);
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.newsletter-form{
+  display:flex;
+  align-items:center;
+
+  gap:18px;
+
+  flex-wrap:wrap;
+}
+
+.input-box{
+  width:320px;
+}
+
+.input-box input{
+  width:100%;
+
+  padding:22px 24px;
+
+  border:none;
+  outline:none;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  color:#fff;
+
+  font-size:16px;
+
+  transition:0.4s;
+}
+
+.input-box input:focus{
+  border-color:#d4af37;
+
+  box-shadow:
+  0 0 20px rgba(212,175,55,0.3);
+}
+
+.input-box input::placeholder{
+  color:rgba(255,255,255,0.55);
+}
+
+/* BUTTON */
+
+.newsletter-form button{
+  padding:22px 36px;
+
+  border:none;
+  cursor:pointer;
+
+  border-radius:20px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #d4af37,
+  #f0cc5a);
+
+  color:#03132d;
+
+  font-size:16px;
+  font-weight:800;
+
+  transition:0.45s;
+}
+
+.newsletter-form button:hover{
+  transform:
+  translateY(-6px)
+  scale(1.03);
+
+  box-shadow:
+  0 22px 50px rgba(212,175,55,0.35);
+}
+
+/* =========================================
+   MAIN GRID
+========================================= */
+
+.footer-main{
+  position:relative;
+  z-index:2;
+
+  display:grid;
+
+  grid-template-columns:
+  2fr 1fr 1fr 1.3fr;
+
+  gap:65px;
+
+  margin-bottom:70px;
+}
+
+/* =========================================
+   LOGO
+========================================= */
+
+.footer-logo{
+  display:flex;
+  align-items:center;
+
+  gap:18px;
+
+  margin-bottom:28px;
+}
+
+.logo-box{
+  width:68px;
+  height:68px;
+
+  border-radius:20px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #d4af37,
+  #f0cc5a);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:32px;
+  font-weight:900;
+
+  color:#04142d;
+
+  box-shadow:
+  0 18px 45px rgba(212,175,55,0.28);
+}
+
+.logo-text h3{
+  font-size:32px;
+  font-weight:900;
+}
+
+.logo-text span{
+  font-size:13px;
+
+  letter-spacing:4px;
+
+  color:#d4af37;
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.footer-desc{
+  color:rgba(255,255,255,0.72);
+
+  line-height:2;
+
+  font-size:16px;
+
+  margin-bottom:36px;
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+.footer-stats{
+  display:flex;
+  align-items:center;
+
+  gap:18px;
+
+  flex-wrap:nowrap;
+
+  overflow-x:auto;
+
+  scrollbar-width:none;
+}
+
+.footer-stats::-webkit-scrollbar{
+  display:none;
+}
+
+.stat-card{
+  min-width:165px;
+
+  padding:24px;
+
+  border-radius:22px;
+
+  background:rgba(255,255,255,0.05);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  transition:0.45s;
+
+  flex-shrink:0;
+}
+
+.stat-card:hover{
+  transform:translateY(-10px);
+
+  background:rgba(255,255,255,0.08);
+}
+
+.stat-card h4{
+  font-size:30px;
+
+  color:#d4af37;
+
+  margin-bottom:8px;
+}
+
+.stat-card span{
+  font-size:14px;
+
+  color:rgba(255,255,255,0.7);
+}
+
+/* =========================================
+   COLUMNS
+========================================= */
+
+.footer-column h3{
+  font-size:24px;
+
+  margin-bottom:28px;
+}
+
+.footer-column ul{
+  list-style:none;
+}
+
+.footer-column ul li{
+  margin-bottom:18px;
+}
+
+.footer-column ul li a{
+  text-decoration:none;
+
+  color:rgba(255,255,255,0.7);
+
+  transition:0.35s;
+}
+
+.footer-column ul li a:hover{
+  color:#d4af37;
+
+  padding-left:8px;
+}
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.footer-contact p{
+  margin-bottom:18px;
+
+  line-height:1.9;
+
+  color:rgba(255,255,255,0.72);
+}
+
+/* =========================================
+   SOCIAL ICONS
+========================================= */
+
+.footer-socials{
+  display:flex;
+  align-items:center;
+
+  gap:18px;
+
+  flex-wrap:nowrap;
+
+  overflow-x:auto;
+
+  padding:10px 0;
+
+  scrollbar-width:none;
+}
+
+.footer-socials::-webkit-scrollbar{
+  display:none;
+}
+
+.social-btn{
+  position:relative;
+
+  min-width:64px;
+  width:64px;
+  height:64px;
+
+  border-radius:22px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  overflow:hidden;
+
+  flex-shrink:0;
+
+  background:
+  linear-gradient(
+  145deg,
+  rgba(255,255,255,0.12),
+  rgba(255,255,255,0.03));
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(18px);
+
+  transition:0.45s;
+}
+
+.social-btn::before{
+  content:'';
+
+  position:absolute;
+  inset:-2px;
+
+  border-radius:24px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #ffcc70,
+  #d4af37,
+  #fff5c3);
+
+  opacity:0;
+
+  transition:0.45s;
+}
+
+.social-btn::after{
+  content:'';
+
+  position:absolute;
+  inset:2px;
+
+  border-radius:20px;
+
+  background:#071b3d;
+
+  z-index:1;
+}
+
+.social-btn span{
+  position:relative;
+  z-index:2;
+
+  font-size:28px;
+  font-weight:700;
+
+  color:#fff;
+
+  transition:0.45s;
+}
+
+.social-btn:hover{
+  transform:
+  translateY(-10px)
+  scale(1.08)
+  rotate(8deg);
+
+  box-shadow:
+  0 22px 50px rgba(212,175,55,0.3);
+}
+
+.social-btn:hover::before{
+  opacity:1;
+}
+
+.social-btn:hover span{
+  color:#ffd86b;
+
+  transform:
+  scale(1.2)
+  rotate(-8deg);
+}
+
+/* =========================================
+   FOOTER BOTTOM
+========================================= */
+
+.footer-bottom{
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:30px;
+
+  padding-top:35px;
+
+  border-top:
+  1px solid rgba(255,255,255,0.08);
+}
+
+.bottom-left,
+.bottom-right{
+  color:rgba(255,255,255,0.6);
+
+  font-size:14px;
+
+  line-height:1.8;
+}
+
+/* =========================================
+   SCROLL TOP
+========================================= */
+
+.scroll-top{
+  position:fixed;
+
+  right:25px;
+  bottom:25px;
+
+  width:62px;
+  height:62px;
+
+  border-radius:20px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #d4af37,
+  #f0cc5a);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+
+  color:#04142d;
+
+  font-size:28px;
+  font-weight:900;
+
+  box-shadow:
+  0 22px 55px rgba(212,175,55,0.35);
+
+  z-index:999;
+
+  transition:0.45s;
+}
+
+.scroll-top:hover{
+  transform:
+  translateY(-10px)
+  scale(1.08);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:1100px){
+
+.footer-main{
+  grid-template-columns:1fr 1fr;
+}
+
+.newsletter-left h2{
+  font-size:48px;
+}
+
+}
+
+/* TABLET */
+
+@media(max-width:768px){
+
+.ultra-footer{
+  padding:90px 5% 30px;
+}
+
+.footer-newsletter{
+  flex-direction:column;
+
+  align-items:flex-start;
+
+  padding:40px 28px;
+}
+
+.newsletter-left h2{
+  font-size:40px;
+}
+
+.footer-main{
+  grid-template-columns:1fr;
+
+  gap:45px;
+}
+
+.footer-bottom{
+  flex-direction:column;
+
+  align-items:flex-start;
+}
+
+.newsletter-form{
+  width:100%;
+
+  flex-direction:column;
+}
+
+.input-box{
+  width:100%;
+}
+
+.newsletter-form button{
+  width:100%;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+.ultra-footer{
+  padding:70px 4% 20px;
+}
+
+.footer-newsletter{
+  padding:24px 18px;
+
+  gap:24px;
+}
+
+.newsletter-left h2{
+  font-size:30px;
+}
+
+.newsletter-left p{
+  font-size:15px;
+}
+
+.footer-logo{
+  flex-direction:column;
+
+  align-items:flex-start;
+}
+
+.logo-text h3{
+  font-size:24px;
+}
+
+.social-btn{
+  min-width:56px;
+  width:56px;
+  height:56px;
+
+  border-radius:18px;
+}
+
+.social-btn span{
+  font-size:24px;
+}
+
+.scroll-top{
+  width:54px;
+  height:54px;
+
+  right:15px;
+  bottom:15px;
+
+  font-size:22px;
+}
+
+}
+/* =========================
+   MOBILE MENU
+========================= */
+
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+.call-btn{
+display:flex;
+padding:12px 20px;
+font-size:14px;
+}
+
+.nav-links{
+position:fixed;
+top:0;
+left:-100%;
+width:100%;
+height:100vh;
+background:linear-gradient(
+135deg,
+#0b1f4d,
+#162f6d
+);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:35px;
+transition:.5s ease-in-out;
+z-index:999;
+}
+
+.nav-links.active{
+left:0;
+}
+
+.nav-links li{
+opacity:0;
+transform:translateY(30px);
+transition:.5s ease;
+}
+
+.nav-links.active li{
+opacity:1;
+transform:translateY(0);
+}
+
+.nav-links li:nth-child(1){transition-delay:.1s;}
+.nav-links li:nth-child(2){transition-delay:.2s;}
+.nav-links li:nth-child(3){transition-delay:.3s;}
+.nav-links li:nth-child(4){transition-delay:.4s;}
+
+.nav-links a{
+font-size:28px;
+font-weight:700;
+}
+
+.logo img{
+height:38px;
+}
+
+.navbar{
+padding:0 4%;
+height:70px;
+}
+
+.hero{
+padding:140px 5% 80px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.stats-grid{
+grid-template-columns:1fr;
+padding:70px 5%;
+}
+
+.about-section{
+padding:80px 5%;
+}
+
+.invest-text h2{
+font-size:36px;
+}
+
+.form-section{
+padding:80px 5%;
+}
+
+.form-box{
+padding:40px 25px;
+}
+
+.invest-form{
+grid-template-columns:1fr;
+}
+
+.form-group.full{
+grid-column:auto;
+}
+
+.invest-btn{
+grid-column:auto;
+}
+
+.newsletter{
+margin:80px 5%;
+padding:40px 25px;
+}
+
+.newsletter-left h2{
+font-size:34px;
+}
+
+.newsletter-form{
+width:100%;
+flex-direction:column;
+}
+
+.newsletter-form .input-box{
+width:100%;
+}
+
+.footer{
+padding:80px 5% 30px;
+}
+
+.footer-grid{
+grid-template-columns:1fr;
+}
+
+.footer-bottom{
+flex-direction:column;
+text-align:center;
+}
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:480px){
+
+.navbar{
+padding:0 3%;
+height:60px;
+}
+
+.menu-toggle{
+font-size:24px;
+padding:8px;
+}
+
+.call-btn{
+padding:10px 16px;
+font-size:12px;
+gap:6px;
+}
+
+.logo img{
+height:32px;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+.hero-tag{
+font-size:12px;
+padding:12px 18px;
+}
+
+.stat-card h2{
+font-size:32px;
+}
+
+.invest-text h2{
+font-size:28px;
+}
+
+.form-title h2{
+font-size:32px;
+}
+
+.newsletter-left h2{
+font-size:28px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav class="navbar">
+
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+        <img src="logo.webp" alt="Logo">
+    </a>
+
+    <!-- Menu -->
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="invest.html">Invest Now</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+        <li class="mobile-btn">
+            <a href="login.html" class="signup-btn">Sign Up</a>
+        </li>
+    </ul>
+
+    <!-- Hamburger -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+</nav>
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-tag">
+
+    <i class="fas fa-chart-line"></i>
+
+    ULTRA PREMIUM INVESTMENT
+
+</div>
+
+<h1>
+    Invest In
+    Luxury Future
+</h1>
+
+<p>
+    EstateLux creates elite futuristic
+    investment ecosystems with luxury villas,
+    premium apartments, smart commercial
+    properties and high-return real estate
+    opportunities worldwide.
+</p>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats-grid">
+
+<div class="stat-card">
+
+    <h2>$8.9B</h2>
+
+    <p>
+        Property Investments
+    </p>
+
+</div>
+
+<div class="stat-card">
+
+    <h2>25K+</h2>
+
+    <p>
+        Global Investors
+    </p>
+
+</div>
+
+<div class="stat-card">
+
+    <h2>150+</h2>
+
+    <p>
+        Premium Projects
+    </p>
+
+</div>
+
+<div class="stat-card">
+
+    <h2>99%</h2>
+
+    <p>
+        Investment Success
+    </p>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about-section">
+
+<div class="invest-image">
+
+   <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1400&auto=format&fit=crop&fm=webp"
+alt="Luxury Property">
+
+    <div class="invest-box">
+
+        <h3>15+</h3>
+
+        <span>
+            Years Investment Excellence
+        </span>
+
+    </div>
+
+</div>
+
+<div class="invest-text">
+
+    <h2>
+        Building Future
+        Investment Ecosystems
+    </h2>
+
+    <p>
+        EstateLux transforms traditional
+        real estate into futuristic premium
+        investment experiences powered by
+        luxury architecture, smart analytics
+        and elite global property systems.
+    </p>
+
+    <div class="features">
+
+        <div class="feature">
+
+            <i class="fas fa-city"></i>
+
+            <div>
+
+                <h3>
+                    Smart Luxury Projects
+                </h3>
+
+                <p>
+                    Premium villas and futuristic apartments.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <i class="fas fa-shield-alt"></i>
+
+            <div>
+
+                <h3>
+                    Secure Investments
+                </h3>
+
+                <p>
+                    Trusted high-value premium ecosystems.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="feature">
+
+            <i class="fas fa-gem"></i>
+
+            <div>
+
+                <h3>
+                    High ROI Returns
+                </h3>
+
+                <p>
+                    Elite investment opportunities worldwide.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- FORM -->
+
+<section class="form-section">
+
+<div class="form-box">
+
+    <div class="form-title">
+
+        <h2>
+            Start Your Investment
+        </h2>
+
+        <p>
+            Join our futuristic luxury
+            real estate ecosystem and
+            unlock elite investment
+            opportunities globally.
+        </p>
+
+    </div>
+
+    <form class="invest-form"
+    id="investForm">
+
+        <div class="form-group">
+
+            <label>
+                Full Name
+            </label>
+
+            <div class="input-box">
+
+                <i class="fas fa-user"></i>
+
+                <input
+                type="text"
+                placeholder="Enter your full name"
+                required>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Email Address
+            </label>
+
+            <div class="input-box">
+
+                <i class="fas fa-envelope"></i>
+
+                <input
+                type="email"
+                placeholder="Enter your email"
+                required>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Phone Number
+            </label>
+
+            <div class="input-box">
+
+                <i class="fas fa-phone"></i>
+
+                <input
+                type="tel"
+                placeholder="Enter your number"
+                required>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Investment Type
+            </label>
+
+            <div class="input-box">
+
+                <i class="fas fa-building"></i>
+
+                <select required>
+
+                    <option value="">
+                        Select Investment
+                    </option>
+
+                    <option>
+                        Luxury Villas
+                    </option>
+
+                    <option>
+                        Smart Apartments
+                    </option>
+
+                    <option>
+                        Commercial Projects
+                    </option>
+
+                    <option>
+                        Premium Lands
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="form-group full">
+
+            <label>
+                Investment Goals
+            </label>
+
+            <div class="input-box">
+
+                <i class="fas fa-chart-line"></i>
+
+                <textarea
+                placeholder="Write your investment goals..."
+                required></textarea>
+
+            </div>
+
+        </div>
+
+        <button type="submit"
+        class="invest-btn">
+
+            INVEST NOW
+
+        </button>
+
+    </form>
+
+</div>
+
+</section>
+
+<!-- NEWSLETTER -->
+
+<section class="newsletter">
+
+<div class="newsletter-left">
+
+  <span class="footer-mini-tag">
+    ⚡ PREMIUM INVESTMENT NETWORK
+  </span>
+
+  <h2>
+    Build Wealth With
+    <span>Confidence</span>
+  </h2>
+
+  <p>
+    Join thousands of smart investors using
+    premium real estate and digital assets
+    to generate long-term wealth growth.
+  </p>
+
+</div>
+
+<form class="newsletter-form">
+
+  <div class="input-box">
+    <input type="email" placeholder="Enter your email address">
+  </div>
+
+  <button type="submit">
+    Join Now
+  </button>
+
+</form>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="ultra-footer">
+
+  <!-- TOP GLOW -->
+  <div class="footer-glow glow-1"></div>
+  <div class="footer-glow glow-2"></div>
+
+  <!-- NEWSLETTER -->
+
+  <div class="footer-newsletter">
+
+    <div class="newsletter-left">
+
+      <span class="footer-mini-tag">
+        ⚡ PREMIUM INVESTMENT NETWORK
+      </span>
+
+      <h2>
+        Build Wealth With
+        <span>Confidence</span>
+      </h2>
+
+      <p>
+        Join thousands of smart investors using
+        premium real estate and digital assets
+        to generate long-term wealth growth.
+      </p>
+
+    </div>
+
+    <form class="newsletter-form">
+
+      <div class="input-box">
+        <input type="email" placeholder="Enter your email address">
+      </div>
+
+      <button type="submit">
+        Join Now
+      </button>
+
+    </form>
+
+  </div>
+
+  <!-- MAIN FOOTER -->
+
+  <div class="footer-main">
+
+    <!-- COLUMN 1 -->
+
+    <div class="footer-column footer-brand">
+
+      <div class="footer-logo">
+
+        
+
+        <a href="index.html" class="logo">
+            <img src="logo.webp" alt="Logo">
+        </a>
+
+
+      </div>
+
+      <p class="footer-desc">
+        Stackly Realty Holdings Pvt Ltd is India’s
+        premium hybrid investment ecosystem blending
+        real estate, startup equity, and regulated
+        digital assets into one futuristic platform.
+      </p>
+
+      <!-- STATS -->
+
+      <div class="footer-stats">
+
+        <div class="stat-card">
+          <h4>₹300Cr+</h4>
+          <span>Asset Portfolio</span>
+        </div>
+
+        <div class="stat-card">
+          <h4>12K+</h4>
+          <span>Active Investors</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- COLUMN 2 -->
+
+    <div class="footer-column">
+
+      <h3>Quick Menu</h3>
+
+      <ul>
+
+        <li><a href="index.html">Home</a></li>
+
+        <li><a href="about.html">About Us</a></li>
+
+        <li><a href="Invest.htm">Investment Plans</a></li>
+
+        <li><a href="404.html">Portfolio</a></li>
+
+        <li><a href="contact.html">Contact</a></li>
+
+      </ul>
+
+    </div>
+
+    <!-- COLUMN 3 -->
+
+    <div class="footer-column">
+
+      <h3>Resources</h3>
+
+      <ul>
+
+        <li><a href="404.html">Blogs & News</a></li>
+
+        <li><a href="404.html">Risk Management</a></li>
+
+        <li><a href="404.html">Privacy Policy</a></li>
+
+        <li><a href="404.html">Terms & Conditions</a></li>
+
+        <li><a href="404.html">Investor Guide</a></li>
+
+      </ul>
+
+    </div>
+
+    <!-- COLUMN 4 -->
+
+    <div class="footer-column">
+
+      <h3>Contact Us</h3>
+
+      <div class="footer-contact">
+
+        <p>
+          📍 7th Floor, MG Road,
+          Bangalore - 560001, India
+        </p>
+
+        <p>
+          📞 +91 98450 12345
+        </p>
+
+        <p>
+          ✉ support@stacklyholdings.com
+        </p>
+
+      </div>
+
+      <!-- SOCIAL -->
+
+      <div class="footer-socials">
+
+  <!-- INSTAGRAM -->
+  <a href="404.html" class="social-btn insta">
+    <span>⌾</span>
+  </a>
+
+  <!-- X / TWITTER -->
+  <a href="404.html" class="social-btn twitter">
+    <span>✕</span>
+  </a>
+
+  <!-- FACEBOOK -->
+  <a href="404.html" class="social-btn facebook">
+    <span>ⓕ</span>
+  </a>
+
+  <!-- YOUTUBE -->
+  <a href="404.html" class="social-btn youtube">
+    <span>▶</span>
+  </a>
+
+  <!-- LINKEDIN -->
+  <a href="404.html" class="social-btn linkedin">
+    <span>in</span>
+  </a>
+
+</div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER STRIP -->
+
+  <div class="footer-bottom">
+
+    <div class="bottom-left">
+      © 2025 Stackly Realty Holdings Pvt Ltd.
+      All Rights Reserved.
+    </div>
+
+    <div class="bottom-right">
+      Investments are subject to market risks.
+      Please read all documents carefully before investing.
+    </div>
+
+  </div>
+
+  <!-- FLOATING BUTTON -->
+
+  <a href="#" class="scroll-top">
+    ↑
+  </a>
+
+</footer>
+
+<script>
+
+/* MOBILE MENU */
+
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuToggle.addEventListener(
+"click",
+()=>{
+
+navLinks.classList.toggle("active");
+
+if(navLinks.classList.contains("active")){
+
+menuToggle.innerHTML =
+'<i class="fas fa-xmark"></i>';
+
+document.body.style.overflow =
+"hidden";
+
+}
+
+else{
+
+menuToggle.innerHTML =
+'<i class="fas fa-bars"></i>';
+
+document.body.style.overflow =
+"auto";
+
+}
+
+});
+
+/* CLOSE MENU */
+
+document.querySelectorAll(
+".nav-links a"
+
+).forEach(link=>{
+
+link.addEventListener(
+"click",
+()=>{
+
+navLinks.classList.remove(
+"active"
+);
+
+menuToggle.innerHTML =
+'<i class="fas fa-bars"></i>';
+
+document.body.style.overflow =
+"auto";
+
+});
+
+});
+
+/* FORM */
+
+document.getElementById(
+"investForm"
+
+).addEventListener(
+"submit",
+
+function(e){
+
+e.preventDefault();
+
+alert(
+"Investment Request Submitted Successfully!"
+);
+
+});
+
+</script>
+
+</body>
+</html>
+```

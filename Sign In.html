@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EstateLux - Sign Up</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Arial',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#050c18,#0b1b33);
+color:#fff;
+min-height:100vh;
+}
+
+/* ================= NAVBAR ================= */
+.navbar{
+  position:fixed;
+top:0;
+left:0;
+width:100%;
+height:80px;
+padding:0 6%;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+background:rgba(10,20,40,.7);
+backdrop-filter:blur(20px);
+
+border-bottom:
+1px solid rgba(255,255,255,.08);
+
+z-index:1000;
+}
+
+
+
+/* LOGO */
+.logo img{
+  height:62px;
+  width:auto;
+  display:block;
+
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(78%)
+    sepia(68%)
+    saturate(659%)
+    hue-rotate(7deg)
+    brightness(102%)
+    contrast(95%);
+
+  transition:0.4s ease;
+}
+
+.logo img:hover{
+  transform:scale(1.05);
+}
+
+/* MENU */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:50px;
+  list-style:none;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#e6c436;
+  font-size:16px;
+  font-weight:600;
+  position:relative;
+  transition:0.3s ease;
+}
+
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:2px;
+  background:#e6c436;
+  transition:0.4s ease;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.nav-links a:hover{
+  color:#d4aa2a;
+}
+
+/* CALL BUTTON */
+.call-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  background:#e6c436;
+  color:#111;
+  padding:14px 28px;
+  border-radius:50px;
+  font-weight:700;
+  transition:0.3s ease;
+}
+
+.call-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(230,196,54,.35);
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:30px;
+  color:#e6c436;
+  cursor:pointer;
+  z-index:1001;
+  transition:0.3s ease;
+  background:none;
+  border:none;
+  padding:10px;
+}
+
+.menu-toggle:hover{
+  color:#f4d84a;
+  transform:rotate(90deg);
+}
+
+/* TABLET */
+@media(max-width:991px){
+  .navbar{
+    padding:0 5%;
+  }
+
+  .nav-links{
+    gap:25px;
+  }
+}
+
+/* MOBILE GLASS MENU */
+@media(max-width:768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-links{
+    position:fixed;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100vh;
+
+    background:linear-gradient(135deg,#0b1f4d,#162f6d);
+    backdrop-filter:blur(12px);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+
+    transition:0.5s ease-in-out;
+    z-index:999;
+  }
+
+  .nav-links.active{
+    left:0;
+  }
+
+  .nav-links li{
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.5s ease;
+  }
+
+  .nav-links.active li{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .nav-links li:nth-child(1){transition-delay:0.1s;}
+  .nav-links li:nth-child(2){transition-delay:0.2s;}
+  .nav-links li:nth-child(3){transition-delay:0.3s;}
+  .nav-links li:nth-child(4){transition-delay:0.4s;}
+
+  .nav-links a{
+    font-size:28px;
+    font-weight:700;
+    color:#fff;
+  }
+
+  .nav-links a:hover{
+    color:#e6c436;
+    transform:translateX(10px);
+  }
+
+  .navbar{
+    height:70px;
+    padding:0 4%;
+  }
+}
+
+/* SMALL MOBILE */
+@media(max-width:480px){
+  .navbar{
+    padding:0 3%;
+    height:60px;
+  }
+
+  .menu-toggle{
+    font-size:24px;
+    padding:8px;
+    margin-left: 150px;;
+  }
+
+  .call-btn{
+    padding:10px 16px;
+    font-size:12px;
+  }
+
+  .logo img{
+    height:32px;
+  }
+}
+
+/* =========================
+   PREMIUM SIGNUP BUTTON
+========================= */
+
+.mobile-btn {
+  list-style: none;
+}
+
+/* BUTTON BASE */
+.signup-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 26px;
+  border-radius: 50px;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+
+  color: #fff;
+
+  /* Ultra gradient */
+  background: linear-gradient(
+    135deg,
+    #00f5a0,
+    #00d9f5,
+    #6a5cff,
+    #ff4ecd
+  );
+  background-size: 300% 300%;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 10px 30px rgba(0, 255, 200, 0.25),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(10px);
+
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* ANIMATED GRADIENT SHIFT */
+.signup-btn {
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* HOVER EFFECT */
+.signup-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 15px 45px rgba(0, 255, 200, 0.35),
+    0 0 25px rgba(255, 78, 205, 0.35);
+}
+
+/* CLICK EFFECT */
+.signup-btn:active {
+  transform: scale(0.98);
+}
+
+/* GLOW PULSE DOT */
+.signup-btn::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.signup-btn:hover::before {
+  opacity: 1;
+}
+
+/* SHINE SWEEP EFFECT */
+.signup-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+.signup-btn:hover::after {
+  animation: shine 1s ease forwards;
+}
+
+@keyframes shine {
+  100% {
+    left: 120%;
+  }
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .signup-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+
+/* ================= PAGE LAYOUT ================= */
+.container{
+padding-top:100px;
+max-width:1100px;
+margin:auto;
+display:flex;
+gap:30px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+/* LEFT */
+.left{
+    flex:1;
+    min-width:300px;
+    padding:30px;
+    position:relative;
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.55)
+    ),
+    url("https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1400&auto=format&fit=crop&fm=webp");
+
+    background-size:cover;
+    background-position:center;
+
+    border-radius:20px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    color:#e6c436;
+}
+
+/* RIGHT CARD */
+.card{
+flex:1;
+min-width:320px;
+padding:30px;
+background:rgba(255,255,255,0.07);
+border-radius:20px;
+}
+
+/* FORM */
+input,select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:10px;
+border:none;
+outline:none;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+background:gold;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+        <img src="logo.webp" alt="Logo">
+    </a>
+
+    <!-- Menu -->
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="invest.html">Invest Now</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+        <li class="mobile-btn">
+            <a href="login.html" class="signup-btn">Sign Up</a>
+        </li>
+    </ul>
+
+    <!-- Hamburger -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+</nav>
+
+<!-- PAGE -->
+<div class="container">
+
+<!-- LEFT -->
+<div class="left">
+
+    <h1>Create Account</h1>
+
+    <p>
+        Join our premium real estate platform and explore
+        luxury villas, apartments, and smart investments.
+    </p>
+
+</div>
+
+<!-- RIGHT -->
+<div class="card">
+
+<h2>Sign Up</h2>
+
+<form onsubmit="registerUser(event)">
+
+  <input type="text" placeholder="Full Name" required>
+
+  <input type="email" id="email" placeholder="Email" required>
+
+  <input type="tel" placeholder="Phone" required>
+
+  <select required>
+    <option value="">Select Property</option>
+    <option>Villa</option>
+    <option>Apartment</option>
+    <option>Commercial</option>
+  </select>
+
+  <input type="password" id="password" placeholder="Password" required>
+
+  <button type="submit">CREATE ACCOUNT</button>
+
+</form>
+
+<script>
+function registerUser(event) {
+
+    event.preventDefault();
+
+    // Get values
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // Save data (optional)
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPassword", password);
+
+    // Redirect to login page
+    window.location.href = "login.html";
+}
+</script>
+
+</div>
+
+</div>
+
+<script>
+const menuToggle =
+document.getElementById("menuToggle");
+
+const navLinks =
+document.getElementById("navLinks");
+
+menuToggle.addEventListener(
+"click",
+
+()=>{
+
+navLinks.classList.toggle("active");
+
+if(navLinks.classList.contains("active")){
+
+menuToggle.innerHTML =
+'<i class="fas fa-xmark"></i>';
+
+}
+
+else{
+
+menuToggle.innerHTML =
+'<i class="fas fa-bars"></i>';
+
+}
+
+});
+
+
+
+</script>
+
+</body>
+</html>

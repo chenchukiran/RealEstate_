@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EstateLux Premium Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#07111f,#0d1b2a);
+    color:#fff;
+}
+
+/* NAVBAR */
+
+.navbar{
+  position:fixed;
+top:0;
+left:0;
+width:100%;
+height:80px;
+padding:0 6%;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+background:rgba(10,20,40,.7);
+backdrop-filter:blur(20px);
+
+border-bottom:
+1px solid rgba(255,255,255,.08);
+
+z-index:1000;
+}
+
+
+
+/* LOGO */
+.logo img{
+  height:62px;
+  width:auto;
+  display:block;
+
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(78%)
+    sepia(68%)
+    saturate(659%)
+    hue-rotate(7deg)
+    brightness(102%)
+    contrast(95%);
+
+  transition:0.4s ease;
+}
+
+.logo img:hover{
+  transform:scale(1.05);
+}
+
+/* MENU */
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:50px;
+  list-style:none;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#e6c436;
+  font-size:16px;
+  font-weight:600;
+  position:relative;
+  transition:0.3s ease;
+}
+
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:2px;
+  background:#e6c436;
+  transition:0.4s ease;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.nav-links a:hover{
+  color:#d4aa2a;
+}
+
+/* CALL BUTTON */
+.call-btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  background:#e6c436;
+  color:#111;
+  padding:14px 28px;
+  border-radius:50px;
+  font-weight:700;
+  transition:0.3s ease;
+}
+
+.call-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(230,196,54,.35);
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:30px;
+  color:#e6c436;
+  cursor:pointer;
+  z-index:1001;
+  transition:0.3s ease;
+  background:none;
+  border:none;
+  padding:10px;
+}
+
+.menu-toggle:hover{
+  color:#f4d84a;
+  transform:rotate(90deg);
+}
+
+/* TABLET */
+@media(max-width:991px){
+  .navbar{
+    padding:0 5%;
+  }
+
+  .nav-links{
+    gap:25px;
+  }
+}
+
+/* MOBILE GLASS MENU */
+@media(max-width:768px){
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .nav-links{
+    position:fixed;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100vh;
+
+    background:linear-gradient(135deg,#0b1f4d,#162f6d);
+    backdrop-filter:blur(12px);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:35px;
+
+    transition:0.5s ease-in-out;
+    z-index:999;
+  }
+
+  .nav-links.active{
+    left:0;
+  }
+
+  .nav-links li{
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.5s ease;
+  }
+
+  .nav-links.active li{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .nav-links li:nth-child(1){transition-delay:0.1s;}
+  .nav-links li:nth-child(2){transition-delay:0.2s;}
+  .nav-links li:nth-child(3){transition-delay:0.3s;}
+  .nav-links li:nth-child(4){transition-delay:0.4s;}
+
+  .nav-links a{
+    font-size:28px;
+    font-weight:700;
+    color:#fff;
+  }
+
+  .nav-links a:hover{
+    color:#e6c436;
+    transform:translateX(10px);
+  }
+
+  .navbar{
+    height:70px;
+    padding:0 4%;
+  }
+}
+
+/* SMALL MOBILE */
+@media(max-width:480px){
+  .navbar{
+    padding:0 3%;
+    height:60px;
+  }
+
+  .menu-toggle{
+    font-size:24px;
+    padding:8px;
+  }
+
+  .call-btn{
+    padding:10px 16px;
+    font-size:12px;
+  }
+
+  .logo img{
+    height:32px;
+  }
+}
+
+/* =========================
+   PREMIUM SIGNUP BUTTON
+========================= */
+
+.mobile-btn {
+  list-style: none;
+}
+
+/* BUTTON BASE */
+.signup-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 26px;
+  border-radius: 50px;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+
+  color: #fff;
+
+  /* Ultra gradient */
+  background: linear-gradient(
+    135deg,
+    #00f5a0,
+    #00d9f5,
+    #6a5cff,
+    #ff4ecd
+  );
+  background-size: 300% 300%;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 10px 30px rgba(0, 255, 200, 0.25),
+    inset 0 0 10px rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(10px);
+
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+/* ANIMATED GRADIENT SHIFT */
+.signup-btn {
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* HOVER EFFECT */
+.signup-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 15px 45px rgba(0, 255, 200, 0.35),
+    0 0 25px rgba(255, 78, 205, 0.35);
+}
+
+/* CLICK EFFECT */
+.signup-btn:active {
+  transform: scale(0.98);
+}
+
+/* GLOW PULSE DOT */
+.signup-btn::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.signup-btn:hover::before {
+  opacity: 1;
+}
+
+/* SHINE SWEEP EFFECT */
+.signup-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+}
+
+.signup-btn:hover::after {
+  animation: shine 1s ease forwards;
+}
+
+@keyframes shine {
+  100% {
+    left: 120%;
+  }
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .signup-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    top:80px;
+    left:0;
+
+    width:280px;
+    height:calc(100vh - 80px);
+
+    background:linear-gradient(
+    180deg,
+    #111,
+    #1d1d1d,
+    #272727);
+
+    border-right:2px solid #e6c436;
+
+    padding:25px;
+}
+
+.sidebar h3{
+    color:#e6c436;
+    margin-bottom:25px;
+    text-transform:uppercase;
+}
+
+.menu{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#fff;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.04);
+
+    transition:.3s;
+}
+
+.menu a:hover{
+    background:#e6c436;
+    color:#111;
+    transform:translateX(8px);
+}
+
+/* MAIN */
+
+.main{
+    margin-left:280px;
+    padding:110px 30px 30px;
+}
+
+.hero{
+    background:linear-gradient(
+    135deg,
+    rgba(230,196,54,.15),
+    rgba(230,196,54,.05));
+
+    border:1px solid rgba(230,196,54,.15);
+
+    padding:30px;
+    border-radius:20px;
+}
+
+.hero h1{
+    color:#e6c436;
+    margin-bottom:10px;
+}
+
+/* STATS */
+
+.cards{
+    margin-top:25px;
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:25px;
+    border-radius:18px;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 15px 30px rgba(230,196,54,.15);
+}
+
+.card i{
+    font-size:30px;
+    color:#e6c436;
+    margin-bottom:15px;
+}
+
+.card h2{
+    color:#e6c436;
+    margin-bottom:8px;
+}
+
+/* TABLE */
+
+.section{
+    margin-top:30px;
+}
+
+.section-title{
+    margin-bottom:20px;
+    color:#e6c436;
+}
+
+.table-box{
+    overflow:auto;
+
+    background:rgba(255,255,255,.05);
+
+    border-radius:18px;
+    padding:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    color:#e6c436;
+    text-align:left;
+    padding:15px;
+}
+
+table td{
+    padding:15px;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* USER */
+
+.user-box{
+    margin-top:30px;
+
+    background:rgba(255,255,255,.05);
+
+    padding:25px;
+
+    border-radius:18px;
+}
+
+.user-box h3{
+    color:#e6c436;
+    margin-bottom:15px;
+}
+
+.logout{
+    margin-top:15px;
+
+    background:#e6c436;
+    color:#111;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:40px;
+    text-align:center;
+    color:#888;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+        top:0;
+    }
+
+    .main{
+        margin-left:0;
+        padding:30px 20px;
+    }
+
+    .menu{
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+
+    .navbar{
+        padding:0 20px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <!-- Logo -->
+    <a href="index.html" class="logo">
+        <img src="logo.webp" alt="Logo">
+    </a>
+
+    <!-- Menu -->
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="invest.html">Invest Now</a></li>
+        <li><a href="contact.html">Contact</a></li>
+
+        <!-- MOBILE ONLY SIGN UP -->
+        <li class="mobile-btn">
+            <a href="Sign In.html" class="signup-btn">Sign Up</a>
+        </li>
+    </ul>
+
+    <!-- Hamburger -->
+    <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+</nav>
+
+<div class="sidebar">
+
+
+<h3>Dashboard</h3>
+
+<div class="menu">
+    <a href="#"><i class="fas fa-home"></i> Home</a>
+    <a href="#"><i class="fas fa-building"></i> Properties</a>
+    <a href="#"><i class="fas fa-chart-line"></i> Investments</a>
+    <a href="#"><i class="fas fa-file-alt"></i> Reports</a>
+    <a href="#"><i class="fas fa-users"></i> Clients</a>
+    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+    <a href="#" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+    </a>
+</div>
+
+
+</div>
+
+<div class="main">
+
+
+<div class="hero">
+    <h1>Welcome Back 👋</h1>
+    <p>Manage your luxury real-estate investments and clients.</p>
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <i class="fas fa-building"></i>
+        <h2>24</h2>
+        <p>Active Properties</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-chart-line"></i>
+        <h2>₹12.5L</h2>
+        <p>Investment Portfolio</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-wallet"></i>
+        <h2>₹3.2L</h2>
+        <p>Monthly Revenue</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-users"></i>
+        <h2>150+</h2>
+        <p>Clients</p>
+    </div>
+
+</div>
+
+<div class="section">
+
+    <h2 class="section-title">Recent Properties</h2>
+
+    <div class="table-box">
+
+        <table>
+
+            <tr>
+                <th>Property</th>
+                <th>Location</th>
+                <th>Value</th>
+            </tr>
+
+            <tr>
+                <td>Luxury Villa</td>
+                <td>Bangalore</td>
+                <td>₹2.5 Cr</td>
+            </tr>
+
+            <tr>
+                <td>Premium Apartment</td>
+                <td>Mumbai</td>
+                <td>₹1.2 Cr</td>
+            </tr>
+
+            <tr>
+                <td>Commercial Space</td>
+                <td>Hyderabad</td>
+                <td>₹4 Cr</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+<div class="user-box">
+
+    <h3>User Information</h3>
+
+    <p id="email"></p>
+    <p id="role"></p>
+
+    <button class="logout" onclick="logout()">
+        Logout
+    </button>
+
+</div>
+
+<div class="footer">
+    © 2026 EstateLux Premium Dashboard
+</div>
+
+
+</div>
+
+<script>
+
+if(localStorage.getItem("login") !== "true"){
+    window.location.href="login.html";
+}
+
+document.getElementById("email").innerText =
+"Email: " + (localStorage.getItem("email") || "admin@estatelux.com");
+
+document.getElementById("role").innerText =
+"Role: " + (localStorage.getItem("role") || "Administrator");
+
+function logout(){
+    localStorage.clear();
+    window.location.href="login.html";
+}
+
+
+
+
+</script>
+
+</body>
+</html>
